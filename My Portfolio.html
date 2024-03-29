@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            header {
+                position: sticky;
+                top: 0;
+                background-color: black;
+                box-shadow: 0 0 20px black;
+            }
+            label.logo {
+                color: white;
+                font-size: 30px;
+                line-height: 70px;
+                margin-left: 80px;
+                letter-spacing: 1.5px;
+                text-shadow: 0 0 10px #0ef,
+                             0 0 20px #0ef,
+                             0 0 50px #0ef,
+                             0 0 75px #0ef;
+            }
+            .navBar {
+                float: right;
+                margin-right: 70px;
+            }
+            #bars {
+                float: right;
+                color: white;
+                line-height: 70px;
+                font-size: 20px;
+                margin-right: 50px;
+                display: none;
+                cursor: pointer;
+            }
+            .navBar ul {
+                line-height: 70px;
+                list-style: none;
+            }
+            .navBar ul li {
+                display: inline;
+            }
+            .navBar ul li a{
+                text-decoration: none;
+                color: white;
+                font-size: 20px;
+                padding: 5px 10px;
+                margin: 0 5px;
+                position: relative;
+            }
+            
+            .navBar ul li a.active,
+            .navBar ul li a:hover {
+                color: #0ef;
+            }
+            
+            .navBar ul li a::before {
+                content: '';
+                transition: 0.5s;
+                position: absolute;
+                top: 90%;
+                left: 0;
+                height: 2px;
+                width: 0%;
+                background-color: #0ef;
+            }
+            
+            .navBar ul li a:hover::before {
+                width: 100%;
+            }
+            
+            #check {
+                display: none;
+            }
+            
+            #check:checked ~ .navBar {
+                right: 0;
+            }
+            
+            
+            header {
+                line-height: 70px;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background-color: black;
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.695);
+            }
+            
+            body {
+                background-color: rgb(58, 58, 58);
+                color: white;
+                font-family: 'Roboto', sans-serif;
+            }
+            
+            footer {
+                background-color: rgb(36, 36, 36);
+                line-height: 80px;
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            #home {
+                height: 100vh;
+            }
+            
+            #about {
+                padding-top: 60px;
+                padding-bottom: 100px;
+                min-height: 100vh;
+                background-color: rgb(36, 36, 36);
+            }
+            
+            #skills {
+                height: 100vh;
+                padding-top: 60px;
+                padding-bottom: 120px;
+            }
+            
+            #portfolio {
+                padding-top: 60px;
+                background-color: rgb(36, 36, 36);
+                min-height: 100vh;
+                padding-bottom: 150px;
+                text-align: center;
+            }
+            
+            #contact {
+                padding-top: 60px;
+            }
+            
+            .my-name {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                height: 100%;
+            }
+            
+            .name {
+                font-size: 40px;
+                text-transform: uppercase;
+                margin-left: 150px;
+            } 
+            
+            .btn-box {
+                margin-left: 150px;
+                margin-top: 20px;
+            }
+            
+            .btn {
+                background: transparent;
+                color: #0ef;
+                border: 2px solid #0ef;
+                padding: 10px 15px;
+                font-size: 15px;
+                font-weight: bold;
+                margin: 10px;
+                cursor: pointer;
+                position: relative;
+                z-index: 1;
+            }
+            
+            .btn:hover {
+                color: black;
+                box-shadow: 0 0 20px #0ef;
+            }
+            
+            .btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 0;
+                background: #0ef;
+                z-index: -1;
+                transition: 0.5s;
+            }
+            
+            .btn:hover::before {
+                width: 100%;
+            }
+            
+            .btn i {
+                font-size: 18px;
+            }
+            
+            .color-txt {
+                color: #0ef;
+            } 
+            
+            .heading {
+                font-size: 50px;
+                text-align: center;
+                margin-bottom: 20px;
+                margin-top: 20px;
+                text-shadow: 0 0 12px #0ef;
+            }
+            
+            .about-section {
+                display: flex;
+                width: 80%;
+                margin: auto;
+                padding-top: 50px;
+            }
+            
+            
+            .image img {
+                width: 250px;
+                /* width: 100%; */
+                box-shadow: 0 0 15px #0ef;
+                border-radius: 8px;
+            }
+            
+            .my-info {
+                font-size: 27px;
+                margin-top: 50px;
+                margin-left: 50px;
+                vertical-align: middle;
+                text-align: center;
+            }
+            
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 90%;
+                margin: auto;
+            }
+            
+            .p-card {
+                width: 250px;
+                position: relative;
+                margin: 20px;
+                border: 3px solid #0ef;
+                height: 150px;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 0 8px #0ef;
+            }
+            
+            .p-card img {
+                /* box-shadow: 0 0 10px #0ef; */
+                width: 250px;
+                height: 100%;
+            }
+            
+            .overlay {
+                text-align: center;
+                border-radius: 20px;
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 00%;
+                width: 100%;
+                background: linear-gradient(to bottom, rgba(0, 238, 255, 0.01) 0,
+                rgba(0, 238, 255, 0.25) 25%,
+                rgba(0, 238, 255, 0.75) 75%,
+                rgba(0, 238, 255, 0.95) 100%);
+                overflow: hidden;
+                transition: 0.5s;
+            }
+            
+            .p-card:hover .overlay {
+                height: 100%;
+                cursor: pointer;
+            }
+            
+            .overlay .p-title {
+                color: #0ef;
+                text-transform: capitalize;
+                font-size: 23px;
+                font-weight: bold;
+            }
+            
+            .portfolio-info {
+                width: 80%;
+                margin: auto;
+                font-size: 20px;
+                margin-bottom: 50px;
+            }
+            
+            .rows {
+                padding-top: 60px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                width: 80%;
+                margin: 0 auto;
+            }
+            
+            .col {
+                padding: 0 20px;
+            }
+            
+            .my-skills-info {
+                width: 80%;
+                margin: 30px auto 0px;
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            .skill-info {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .skill-bar {
+                width: 100%;
+                height: 10px;
+                background: rgb(120, 120, 120);
+                border-radius: 10px;
+                margin-top: 8px;
+            }
+            
+            .color-bar {
+                width: 50%;
+                height: 10px;
+                background: rgb(0, 255, 187);
+                border-radius: 10px;
+                box-shadow: 0 0 8px #0ef;
+            }
+            
+            .html {
+                width: 62%;
+            }
+            
+            .css {
+                width: 47%;
+            }
+            
+            .js {
+                width: 33%;
+            }
+            
+            .python {
+                width: 70%;
+            }
+            
+            .java {
+                width: 75%;
+            }
+            
+            .c-lang {
+                width: 80%;
+            }
+            
+            .skill-card {
+                margin-bottom: 30px;
+            }
+            
+            .contact-section {
+                padding: 30px;
+                display: flex;
+                width: 100%;
+            }
+            
+            .left {
+                width: 50%;
+                padding: 15px;
+                vertical-align: middle;
+            }
+            
+            .left .contact-title {
+                font-size: 20px;
+                font-weight: bold;
+                color: #0ef;
+            }
+            
+            .left .contact-info {
+                font-size: 18px;
+            }
+            
+            .left .contact-card {
+                padding: 15px;
+                display: flex;
+            
+            }
+            
+            .contact-card i {
+                margin-top: 5px;
+                font-size: 25px;
+                color: #0ef;
+            }
+            
+            .contact-links i {
+                font-size: 25px;
+                cursor: pointer;
+                border: 2px solid #0ef;
+                padding: 10px;
+                border-radius: 100%;
+                color: #0ef;
+                transition: 0.5s all;
+            }
+            
+            .contact-links i:hover {
+                background-color: #0ef;
+                color: black;
+                box-shadow: 0 0 15px #0ef;
+                scale: 1.15;
+            }
+            
+            .contact-links {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .contact-links ul {
+                list-style: none;
+            }
+            
+            .contact-links ul li {
+                display: inline;
+                padding: 0 30px;
+            }
+            
+            .contact-details {
+                margin-left: 20px;
+            }
+            
+            .right {
+                width: 50%;
+                display: flex;
+                text-align: center;
+                margin-left: 50px;
+            }
+            
+            input {
+                height: 40px;
+                width: 500px;
+                margin-bottom: 20px;
+                background: transparent;
+                border: 2px #0ef solid;
+                color: white;
+                border-radius: 8px;
+                outline: none;
+                font-size: 15px;
+                padding-left: 15px;
+            }
+            
+            textarea:focus, 
+            input:focus {
+                box-shadow: 0 0 10px #0ef;
+            }
+            
+            textarea {
+                font-size: 15px;
+                border: 2px #0ef solid;
+                background-color: transparent;
+                border-radius: 8px;
+                outline: none;
+                color: white;
+                padding-left: 15px;
+                padding-top: 10px;
+                margin-bottom: 20px;
+            }
+            
+            ::placeholder {
+                color: rgba(255, 255, 255, 0.584);
+            }
+            
+            @media (max-width: 1110px) {
+                #skills {
+                    height: auto;
+                }
+            
+                .my-info {
+                    margin-top: 20px;
+                }
+            }
+            
+            @media (max-width: 1100px) {
+                .contact-links ul li {
+                    padding: 0 20px;
+                }
+            
+                input {
+                    width: 400px;
+                }
+            
+                textarea {
+                    max-width: 400px;
+                }
+            }
+            
+            @media (max-width: 930px) {
+                .contact-links ul li {
+                    padding: 0 10px;
+                }
+            
+                input {
+                    width: 350px;
+                }
+            
+                textarea {
+                    max-width: 350px;
+                }
+            
+                .image img {
+                    width: 200px;
+                }
+            
+                .my-info {
+                    font-size: 23px;
+                }
+            }
+            
+            @media (max-width: 1000px) {
+                .name, .btn-box  {
+                    margin-left: 100px;
+                }
+            
+                .my-info {
+                    margin-top: 0px;
+                }
+            }
+            
+            @media (max-width: 850px) {
+                label.logo {
+                    margin-left: 30px;
+                }
+            
+                .navBar {
+                    margin-right: 10px;
+                }
+            
+                .name {
+                    margin-left: 70px;
+                    font-size: 40px;
+                }
+                
+                .btn-box {
+                    margin-left: 70px;
+                }
+            
+                .about-section,
+                .contact-section {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+            
+                #about {
+                    height: auto;
+                }
+            
+            
+                .my-info {
+                    margin-top: 50px;
+                }
+            
+                .right {
+                    margin-top: 30px;
+                }
+            
+                input {
+                    width: 450px;
+                }
+            
+                textarea {
+                    max-width: 450px;
+                }
+            
+                .rows {
+                    grid-template-columns: 1fr;
+                }
+            }
+            
+            @media (max-width: 750px) {
+                .contact-section {
+                    padding: 0px;
+                    width: 100%;
+                }
+            
+                input {
+                    width: 350px;
+                }
+            
+                textarea {
+                    max-width: 350px;
+                }
+            
+                #portfolio {
+                    height: auto;
+                }
+            }
+            
+            @media (max-width: 730px) {
+                #bars {
+                    display: block;
+                }
+            
+                .navBar {
+                    /* width: 100%; */
+                    margin-right: 0;
+                    width: 300px;
+                    height: 100vh;
+                    background-color: rgba(0, 0, 0, 0.805);
+                    position: fixed;
+                    top: 70px;
+                    right: -100%;
+                    transition: 0.5s all;
+                } 
+            
+                .navBar ul li {
+                    display: block;
+                    text-align: center;
+                }
+            }
+            
+            @media (max-width: 680px) {
+                .name {
+                    font-size: 30px;
+                }
+            
+                .btn {
+                    background: transparent;
+                    color: #0ef;
+                    border: 2px solid #0ef;
+                    padding: 5px 10px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    margin: 10px;
+                    cursor: pointer;
+                    position: relative;
+                    z-index: 1;
+                }
+            }
+            
+            @media (max-width: 550px) {
+                .name {
+                    margin-left: 30px;
+                    font-size: 25px;
+                }
+                
+                .btn-box {
+                    margin-left: 30px;
+                }
+            
+                .contact-card {
+                    width: 100%;
+                }
+            
+                .contact-section {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    padding-left: 30px;
+                }
+            
+                .contact-info {
+                    width: 300px;
+                }
+            
+                ul {
+                    width: 300px;
+                }
+            
+                footer {
+                    font-size: 15px;
+                }        
+                    
+                .right form {
+                    margin-top: 50px;
+                    padding-left: 50px;
+                }
+            }
+            
+            @media (max-width: 630px) {
+                .contact-links i {
+                    font-size: 15px;
+                    padding: 8px;
+                }
+            
+                input {
+                    width: 350px;
+                }
+            
+                textarea {
+                    max-width: 350px;
+                }
+            
+                .right {
+                    margin: 0;
+                }
+            
+                .left .contact-title {
+                    font-size: 18px;
+                }
+                
+                .left .contact-info {
+                    font-size: 15px;
+                }
+            }
+            
+            @media (max-width: 420px) {
+                .contact-section {
+                    padding-left: 15px;
+                }
+                
+                .contact-info {
+                    width: 200px;
+                }
+            
+                .contact-links ul li {
+                    padding: 0 8px;
+                }
+            
+                ul {
+                    width: 220px;
+                }
+            
+                input {
+                    width: 280px;
+                }
+            
+                textarea {
+                    max-width: 280px;
+                }
+            
+                .about-section {
+                    width: 90%;
+                }
+            
+                .my-info {
+                    font-size: 20px;
+                    text-align: center;
+                }
+            }
+            
+            @media (max-width: 380px) {
+                .card .title {
+                    font-size: 23px;
+                }
+                
+                .card .info {
+                    font-size: 15px;
+                }
+            }
+            
+            @media (max-width: 350px) {
+                label.logo {
+                    font-size: 25px;
+                }
+            
+                #bars {
+                    font-size: 15px;
+                    margin-right: 30px;
+                }
+            
+                .navBar {
+                    width: 200px;
+                }
+            
+                footer {
+                    font-size: 13px;
+                }
+            
+                .heading {
+                    font-size: 40px;
+                }
+            
+                .portfolio-info {
+                    font-size: 17px;
+                }
+            
+                .about-section {
+                    width: 100%;
+                }
+            
+                .my-info {
+                    text-align: left;
+                }
+            }
+            
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <label class="logo">My Portfolio</label>
+            <input type="checkbox" id="check" >
+            <label for="check" ><i id="bars" class="fa-solid fa-bars"></i></label>
+            <nav class="navBar">            
+                <ul>
+                    <li><a href="#home" class="active" >Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">My Skills</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section id="home">
+            <div class="my-name">
+                <div class="name">
+                    i am <br> <span class="color-txt">Lakshmi Meghana</span> <br>
+                    Student
+                </div>
+                
+                <div class="btn-box">
+                    <button type="button" class="btn">
+                        <i class="fa-solid fa-download"></i>
+                        Download CV
+                    </button>
+                    
+                    <button type="button" class="btn">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Hire Me
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about">
+            <p class="heading">About <span class="color-txt">Me</span>.</p>
+
+            <div class="about-section">
+                <div class="image">
+                    <img src="images/my-pic.jpeg" alt="">
+                </div>
+                <div class="my-info">
+                    Hello, My name is Lakshmi Meghana. Currently pursuing BTech 3rd year at Sree Vidyanikethan Engineering College, I have a passion for Computer Science. I am constantly seeking opportunities to expand my knowledge and skills through internships, workshops, and personal projects. I possess strong critical thinking and problem-solving abilities, coupled with excellent communication and teamwork skills. I believe in continuous learning and strive to stay updated with the latest industry trends. 
+                </div>
+            </div> 
+        </section>
+        <section id="skills">
+            <p class="heading"> <span class="color-txt">My</span> Skills<span class="color-txt">.</span> </p>
+            <div class="my-skills-info">
+                I have knowledge on some web framework like Flask and Django, which python web framework.
+                And also I have idea on JDBC(Java Database Connectivity), Java Servlets, Java Swing,to develop mini desktop applications, 
+                JSP(Java Server Pages)-Basics, Spring Framework-Basics. Data analytics and visualization using R language and Python. 
+                A little bit knowledge on Machine Learning and Deep Learning. 
+                I can also manage the Database using MySQL and Oracle which are Relation Database Management Systems(RDBMs)
+            </div>
+            <div class="rows">
+                <div class="col">
+                    <div class="skill-card">
+                        <div class="skill-info">
+                            <p>HTML</p>
+                            <p>62%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="color-bar html"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-info">
+                            <p>CSS</p>
+                            <p>47%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="color-bar css"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-info">
+                            <p>JS</p>
+                            <p>33%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="color-bar js"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="skill-card">
+                        <div class="skill-info">
+                            <p>C Language</p>
+                            <p>80%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="color-bar c-lang"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-info">
+                            <p>Java</p>
+                            <p>75%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="color-bar java"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <div class="skill-info">
+                            <p>Python</p>
+                            <p>70%</p>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="color-bar python"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="portfolio">
+            <p class="heading">My <span class="color-txt">Portfolio</span>. </p>
+            <p class="portfolio-info">
+                These are some projects done by me to know more about them please visit my github account. I also done some mini hardware projects using AI Tool and embedded C language IoT based Irrigation System, Alcohol Detection system.  As a 
+                consequence, the system is sending SMS from the accident location to the nearest 
+                Emergency aid service provider. The rising demand for autos has also increased traffic 
+                risks and road accidents. People's lives are at grave danger. 
+            </p>
+            <div style="padding-left: 40%;">
+                <div class="p-card">
+                    <img src="https://theonetechnologies.com/images/portfolio/features-of-accident-assistance-in-mobile-app.webp" alt="de">
+                    <div class="overlay">
+                        <p class="p-title">ADA</p>
+                        <p class="p-info">Accident Detection Assit done using C language. It can give responses to users dynamically.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <p class="heading"><span class="color-txt">Contact</span> Me<span class="color-txt">.</span> </p>
+            <div class="contact-section">
+                
+                <div class="left">
+                    <div class="contact-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div class="contact-details">
+                            <p class="contact-title">Email</p>
+                            <p class="contact-info">lakshmimeghana877@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <div class="contact-details">
+                            <p class="contact-title">Phone</p>
+                            <p class="contact-info">6303931740</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="contact-details">
+                            <p class="contact-title">Address</p>
+                            <p class="contact-info">Vishnu Towers Peruru, Tirupati, Andhra pradesh.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-links">
+                        <ul>
+                            <li><a href="https://github.com/LakshmiMeghana2628" target="_blank">
+                                <i class="fa-brands fa-github"></i></a>
+                            </li>
+                            
+                            <li><i class="fa-brands fa-facebook"></i></li>
+
+                            <li> <i class="fa-brands fa-instagram"></i></li>
+                            
+                            <li><a href="https://www.linkedin.com/in/lakshmi-meghana-46b91a258/" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="right">
+                    <form action="#">
+                        <input type="text" placeholder="Enter Name"> <br>
+                        <input type="text" placeholder="Enter Email"> <br>
+                        <textarea name="" id="" placeholder="Enter your message...." cols="58" rows="10"></textarea> <br>
+                        <button type="submit" class="btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            send
+                        </button>
+                    </form> 
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="copyright">
+                &copy; 2023 All copyrights received : MyPortfolio.com
+            </div>
+        </footer>
+        
+        <script>
+            btn = document.getElementById('bars');
+
+            btn.onclick = () => {
+                btn.classList.toggle('fa-times');
+            }
+
+            let sections = document.querySelectorAll('section');
+            let navLinks = document.querySelectorAll('header nav a');
+            
+            window.onscroll = () => {
+                sections.forEach(sec => {
+                    let top = window.scrollY;
+                    let offset = sec.offsetTop - 150;
+                    let height = sec.offsetHeight;
+                    let id = sec.getAttribute('id');
+            
+                    if(top >= offset && top < offset + height) {
+                        navLinks.forEach(links => {
+                            links.classList.remove('active');
+                            document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                        });
+                    };
+                });
+            };
+        </script>
+
+        <script src="main.js"></script>
+
+    </body>
+</html>
